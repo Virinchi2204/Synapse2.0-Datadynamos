@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATADYNAMOS SYNAPSE 2.0</title>
+    <style>
+        body {
+            background-image: url("/static/background.jpg");  /* Adjust the file extension based on your image format */
+            background-size:cover;
+            background-repeat:no-repeat;
+            background-position:fixed;
+            color: white;
+            h1 {text-align: center; font-family: "Source Code Pro";}
+            label {text-align: center; font-family: "Source Code Pro"; position: top;}
+            button {font-family: "Source Code Pro";}
+            p {text-align: center;font-family: "Source Code Pro";
+  padding-right: 540px;
+  padding-left: 540px;}
+            div {text-align: center;font-family: "Source Code Pro";}
+            form {text-align: center;font-family: "Source Code Pro";}
+              /* Set text color for better visibility on the background */
+        }
+        /* ... (existing styles) ... */
+    </style>
+</head>
+<body>
+    <h1>DATADYNAMOS SYNAPSE 2.0</h1>
+    <form action="/chat" method="post">
+        <label for="user_input">Enter Text to be tested:</label>
+        <input type="text" id="user_input" name="user_input" required>
+        <button type="submit">Send</button>
+    </form>
+    {% if user_input %}
+        <p>You: {{ user_input }}</p>
+    {% endif %}
+    {% if response %}
+        <p>Chatbot: {{ response }}</p>
+    {% endif %}
+</body>
+</html>
