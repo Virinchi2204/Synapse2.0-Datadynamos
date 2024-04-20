@@ -17,6 +17,25 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfTransformer
 import re
+import numpy as np
+import os
+import random
+import cv2
+import sklearn
+import torch
+from PIL import Image
+from pathlib import Path
+from fastai.vision.all import *
+from fastai.callback import *
+from fastai.metrics import error_rate
+from fastai.callback.tracker import EarlyStoppingCallback
+from fastai.vision.all import get_image_files
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
+import warnings
+from flask import json
+from flask import jsonify
+warnings.filterwarnings ('ignore')
 app = Flask(__name__)
 tfidf_vectorizer = TfidfVectorizer()
 
@@ -49,13 +68,51 @@ label_mapping = {
     # Add more labels as needed
 }
 
+learn = load_learner(r"C:\Users\virin\OneDrive\Desktop\Synapse 2.0-Datadynamos\Images\model.pk1")
+def classify_image(img):
+    img = img.resize((224, 224))  # Resize to model input size
+    img = PILImage.create(np.array(img))  # Convert to fastai image format
+    pred, _, _ = learn.predict(img)
+    if pred=="AiArtData":
+        res="Image is AI generated"
+    else:
+        res="Image is not AI generated"
+    return res
 
-@app.route("/")
+
+@app.route("/", methods=["POST","GET"])
 def home():
     return render_template("index.html")
 
+@app.route("/upload", methods=["POST","GET"])
+def upload_and_classify():
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file part'})
+        
+        file = request.files['file']
+        
+        # Check if file is empty
+        if file.filename == '':
+            return jsonify({'error': 'No selected file'})
 
-@app.route("/chat", methods=["POST"])
+        try:
+            # Read image file and convert to PIL image
+            img = Image.open(file)
+            
+            # Perform classification
+            prediction = classify_image(img)
+            
+            # Return prediction result
+            return render_template('index.html', img=img.resize((224, 224)), prediction= prediction)
+        
+        except Exception as e:
+            return jsonify({'error': str(e)})
+
+    # Render upload form for GET requests
+    return render_template('index.html')
+
+@app.route("/chat", methods=["POST", "GET"])
 def chat():
     user_input = request.form.get("user_input")
     user_input_vectorized = tfidf_vectorizer.transform([user_input])

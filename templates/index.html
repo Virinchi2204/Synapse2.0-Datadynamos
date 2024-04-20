@@ -14,8 +14,9 @@
             background-repeat:no-repeat;
             background-position:fixed;
             color: white;
-            h1 {text-align: center; font-family: "Source Code Pro";}
-            label {text-align: center; font-family: "Source Code Pro"; position: top;}
+            h1 {text-align: center; font-family: "Source Code Pro";font-size: 30px;}
+            h2 {text-align: center; font-family: "Source Code Pro";}
+            label {text-align: center; font-family: "Source Code Pro";}
             button {font-family: "Source Code Pro";}
             p {text-align: center;font-family: "Source Code Pro";
   padding-right: 540px;
@@ -32,13 +33,26 @@
     <form action="/chat" method="post">
         <label for="user_input">Enter Text to be tested:</label>
         <input type="text" id="user_input" name="user_input" required>
-        <button type="submit">Send</button>
+        <button type="submit">Upload</button>
     </form>
     {% if user_input %}
         <p>You: {{ user_input }}</p>
     {% endif %}
     {% if response %}
         <p>Chatbot: {{ response }}</p>
+    {% endif %}
+    <h2>Upload Image</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label>Enter Image to be tested <input type="file" name="file" accept="image/*" required></label>
+        <button type="submit">Upload</button>
+    </form>
+    {% if prediction %}
+    <p>
+        <img src={{img}} alt=>
+    </p>
+    <p>
+       Prediction: {{prediction}}
+    </p>
     {% endif %}
 </body>
 </html>
