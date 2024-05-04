@@ -6,49 +6,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DATADYNAMOS SYNAPSE 2.0</title>
+    <title>yAn.yIng detector</title>
     <style>
         body {
-            background-image: url("/static/background.jpg");  /* Adjust the file extension based on your image format */
+            background-image: url('/static/background.jpg');  /* Adjust the file extension based on your image format */
             background-size:cover;
             background-repeat:no-repeat;
             background-position:fixed;
-            color: white;
-            h1 {text-align: center; font-family: "Source Code Pro";font-size: 30px;}
-            h2 {text-align: center; font-family: "Source Code Pro";}
-            label {text-align: center; font-family: "Source Code Pro";}
+            color: black;
+            h1 {text-align: center; font-family: "Source Code Pro";font-size: 35px;}
+            h2 {text-align: left; font-family: "Source Code Pro";font-size: 20px;}
+            h3 {text-align: left; font-family: "Source Code Pro";font-size: 20px;}
+            label {text-align: left; font-family: "Source Code Pro";}
             button {font-family: "Source Code Pro";}
-            p {text-align: center;font-family: "Source Code Pro";
-  padding-right: 540px;
-  padding-left: 540px;}
-            div {text-align: center;font-family: "Source Code Pro";}
-            form {text-align: center;font-family: "Source Code Pro";}
+            p {text-align: left;font-family: "Source Code Pro";padding-right: 600px;}
+            div {text-align: left;font-family: "Source Code Pro";}
+            form {text-align: left;font-family: "Source Code Pro";}
+            img {max-width: 200px; max-height: 200px;}
               /* Set text color for better visibility on the background */
         }
         /* ... (existing styles) ... */
     </style>
 </head>
 <body>
-    <h1>DATADYNAMOS SYNAPSE 2.0</h1>
+    <h1>yAn.yIng detector
+    </h1>
+    <h2>Enter Text</h2>
     <form action="/chat" method="post">
         <label for="user_input">Enter Text to be tested:</label>
         <input type="text" id="user_input" name="user_input" required>
         <button type="submit">Upload</button>
     </form>
     {% if user_input %}
-        <p>You: {{ user_input }}</p>
+        <p>User: {{user_input}}</p>
     {% endif %}
     {% if response %}
-        <p>Chatbot: {{ response }}</p>
+        <p>Result: {{response}}</p>
     {% endif %}
-    <h2>Upload Image</h2>
+    <h3>Upload Image</h3>
     <form action="/upload" method="post" enctype="multipart/form-data">
         <label>Enter Image to be tested <input type="file" name="file" accept="image/*" required></label>
         <button type="submit">Upload</button>
     </form>
     {% if prediction %}
     <p>
-        <img src={{img}} alt=>
+        <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image">
+
     </p>
     <p>
        Prediction: {{prediction}}
