@@ -14,6 +14,7 @@ Dataset :
 Training and testing dataset of the text is included in Subtask B folder in the main branch.
 Images training data is included in Images folder in the main branch.
 Images testing data is included in Images Test Data folder in the main branch
+Due to large size of data we used Git LFS while committing the data to GitHub 
 
 Usage:
 
