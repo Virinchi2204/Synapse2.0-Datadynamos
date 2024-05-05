@@ -18,4 +18,4 @@ Images testing data is included in Images Test Data folder in the main branch
 Usage:
 
 To use the web application. Go to the 'yanying.py' python file in the main branch and run it on the terminal, a link will be shown in the terminal which will redirect you to the web application,
-in which you can upload text or image in their respective sections and find out whether they are ai generated or not. 
+in which you can upload text or image in their respective sections and find out whether they are AI generated or not. 
