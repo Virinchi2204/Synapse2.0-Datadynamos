@@ -3,10 +3,10 @@ Involves multiclass classification task on text data (Humans/AI models which mig
 
 Project Done by :
 
-B.M. Dhiraj, B.Tech in Data Science and Artificial Intelligence, 6th Semester, IIIT Dharwad
-D. Bhuvanesh, B.Tech in Data Science and Artificial Intelligence, 6th Semester, IIIT Dharwad
-M. Virinchi, B.Tech in Data Science and Artificial Intelligence, 6th Semester, IIIT Dharwad
-M. Sai Tarun, B.Tech in Data Science and Artificial Intelligence, 6th Semester, IIIT Dharwad
+B.M. Dhiraj, B.Tech in Data Science and Artificial Intelligence, 6th Semester, IIIT Dharwad  
+D. Bhuvanesh, B.Tech in Data Science and Artificial Intelligence, 6th Semester, IIIT Dharwad  
+M. Virinchi, B.Tech in Data Science and Artificial Intelligence, 6th Semester, IIIT Dharwad  
+M. Sai Tarun, B.Tech in Data Science and Artificial Intelligence, 6th Semester, IIIT Dharwad  
 Prerana Bhat, B.Tech in Data Science and Artificial Intelligence, 6th Semester, IIIT Dharwad
 
 Dataset :
